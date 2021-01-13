@@ -19,8 +19,17 @@ export class AppService {
     return this.productsRepository.insert(obj);
   }
 
-  deleteProduct(id:string):Promise<any>{
+  deleteProduct(id:string):Promise<any> {
     return this.productsRepository.delete(id);
   }
 
+  getProduct(id: string):Promise<any> {
+   return this.productsRepository.findOne(id);
+  }
+
+  updateProduct(obj:any):Promise<any> {
+    const { id, name, price, quantity } = obj;
+    return this.productsRepository.update(id, {name, price, quantity});
+  }
+  
 }
